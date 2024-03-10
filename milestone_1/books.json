@@ -1,0 +1,233 @@
+[
+    {
+      "id": "BK-001",
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "description": "A Pulitzer Prize-winning novel set in the American South during the 1930s, exploring themes of racial injustice and moral growth.",
+      "publicationYear": 1960,
+      "isAvailable": true,
+      "genre": "Fiction",
+      "imageUrl": "https://raw.githubusercontent.com/yourusername/repositoryname/main/images/to-kill-a-mockingbird.jpg",
+      "rating": 4.5,
+      "reviews": [
+        {
+          "username": "booklover123",
+          "rating": 5,
+          "comment": "A timeless classic! Must-read for everyone."
+        },
+        {
+          "username": "avidreader",
+          "rating": 4,
+          "comment": "Compelling story with memorable characters."
+        }
+      ]
+    },
+    {
+      "id": "BK-002",
+      "title": "1984",
+      "author": "George Orwell",
+      "description": "A dystopian novel set in a totalitarian regime, exploring themes of surveillance, manipulation, and resistance.",
+      "publicationYear": 1949,
+      "isAvailable": true,
+      "genre": "Science Fiction",
+      "imageUrl": "https://raw.githubusercontent.com/yourusername/repositoryname/main/images/1984.jpg",
+      "rating": 4.8,
+      "reviews": [
+        {
+          "username": "bigbrotherwatcher",
+          "rating": 5,
+          "comment": "Disturbingly relevant even today."
+        },
+        {
+          "username": "reader1984",
+          "rating": 4,
+          "comment": "Thought-provoking and chilling."
+        }
+      ]
+    },
+    {
+      "id": "BK-003",
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "description": "Set in the roaring twenties, this novel explores themes of wealth, love, and the American Dream.",
+      "publicationYear": 1925,
+      "isAvailable": true,
+      "genre": "Fiction",
+      "imageUrl": "https://raw.githubusercontent.com/yourusername/repositoryname/main/images/the-great-gatsby.jpg",
+      "rating": 4.7,
+      "reviews": [
+        {
+          "username": "gatsbylover",
+          "rating": 5,
+          "comment": "Captivating story with beautiful prose."
+        },
+        {
+          "username": "flapperreader",
+          "rating": 4,
+          "comment": "Loved the atmosphere and characters."
+        }
+      ]
+    },
+    {
+      "id": "BK-004",
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "description": "A classic romance novel exploring societal norms and love.",
+      "publicationYear": 1813,
+      "isAvailable": true,
+      "genre": "Romance",
+      "imageUrl": "https://raw.githubusercontent.com/yourusername/repositoryname/main/images/pride-and-prejudice.jpg",
+      "rating": 4.6,
+      "reviews": [
+        {
+          "username": "janeite123",
+          "rating": 5,
+          "comment": "Timeless love story with witty dialogue."
+        },
+        {
+          "username": "austenfan",
+          "rating": 4,
+          "comment": "Enjoyed the characters and social commentary."
+        }
+      ]
+    },
+    {
+      "id": "BK-005",
+      "title": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "description": "A coming-of-age novel following the adventures of Holden Caulfield.",
+      "publicationYear": 1951,
+      "isAvailable": true,
+      "genre": "Fiction",
+      "imageUrl": "https://raw.githubusercontent.com/yourusername/repositoryname/main/images/the-catcher-in-the-rye.jpg",
+      "rating": 4.3,
+      "reviews": [
+        {
+          "username": "holdenfan",
+          "rating": 5,
+          "comment": "Identified with Holden's journey. A must-read for teenagers."
+        },
+        {
+          "username": "literarycritic",
+          "rating": 3,
+          "comment": "Interesting character study, but felt it was overrated."
+        }
+      ]
+    },
+    {
+      "id": "BK-006",
+      "title": "Moby-Dick",
+      "author": "Herman Melville",
+      "description": "An epic tale of obsession and revenge, following Captain Ahab's quest for the white whale.",
+      "publicationYear": 1851,
+      "isAvailable": true,
+      "genre": "Adventure",
+      "imageUrl": "https://raw.githubusercontent.com/yourusername/repositoryname/main/images/moby-dick.jpg",
+      "rating": 4.4,
+      "reviews": [
+        {
+          "username": "whalelover",
+          "rating": 5,
+          "comment": "A sprawling adventure with rich symbolism."
+        },
+        {
+          "username": "melvillefan",
+          "rating": 4,
+          "comment": "Incredible depth and complexity."
+        }
+      ]
+    },
+    {
+      "id": "BK-007",
+      "title": "The Lord of the Rings",
+      "author": "J.R.R. Tolkien",
+      "description": "A classic fantasy epic following the quest to destroy the One Ring and defeat the Dark Lord Sauron.",
+      "publicationYear": 1954,
+      "isAvailable": true,
+      "genre": "Fantasy",
+      "imageUrl": "https://raw.githubusercontent.com/yourusername/repositoryname/main/images/the-lord-of-the-rings.jpg",
+      "rating": 4.9,
+      "reviews": [
+        {
+          "username": "tolkienfanatic",
+          "rating": 5,
+          "comment": "Masterpiece of world-building and storytelling."
+        },
+        {
+          "username": "fantasyreader",
+          "rating": 4,
+          "comment": "Epic adventure with memorable characters."
+        }
+      ]
+    },
+    {
+        "id": "BK-008",
+        "title": "Harry Potter and the Philosopher's Stone",
+        "author": "J.K. Rowling",
+        "description": "The first book in the beloved Harry Potter series, following the young wizard's journey at Hogwarts School of Witchcraft and Wizardry.",
+        "publicationYear": 1997,
+        "isAvailable": true,
+        "genre": "Fantasy",
+        "imageUrl": "https://raw.githubusercontent.com/yourusername/repositoryname/main/images/harry-potter-and-the-philosophers-stone.jpg",
+        "rating": 4.7,
+        "reviews": [
+            {
+                "username": "potterhead",
+                "rating": 5,
+                "comment": "Magical start to an enchanting series."
+            },
+            {
+                "username": "wizardreader",
+                "rating": 4,
+                "comment": "Enjoyed the magical world and characters."
+            }
+        ]
+    },{
+        "id": "BK-009",
+        "title": "The Hobbit",
+        "author": "J.R.R. Tolkien",
+        "description": "A captivating adventure of Bilbo Baggins as he embarks on an unexpected journey to reclaim the Dwarf kingdom of Erebor.",
+        "publicationYear": 1937,
+        "isAvailable": true,
+        "genre": "Fantasy",
+        "imageUrl": "https://raw.githubusercontent.com/yourusername/repositoryname/main/images/the-hobbit.jpg",
+        "rating": 4.6,
+        "reviews": [
+          {
+            "username": "hobbitlover",
+            "rating": 5,
+            "comment": "Charming tale with delightful characters."
+          },
+          {
+            "username": "tolkienite",
+            "rating": 4,
+            "comment": "Loved the world-building and sense of adventure."
+          }
+        ]
+      },
+      {
+        "id": "BK-010",
+        "title": "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe",
+        "author": "C.S. Lewis",
+        "description": "The first book in the classic fantasy series, where four children discover a magical land ruled by the White Witch and Aslan the lion.",
+        "publicationYear": 1950,
+        "isAvailable": true,
+        "genre": "Fantasy",
+        "imageUrl": "https://raw.githubusercontent.com/yourusername/repositoryname/main/images/the-lion-the-witch-and-the-wardrobe.jpg",
+        "rating": 4.7,
+        "reviews": [
+          {
+            "username": "narnialover",
+            "rating": 5,
+            "comment": "Enchanting world with memorable characters."
+          },
+          {
+            "username": "fantasybuff",
+            "rating": 4,
+            "comment": "Magical adventure for readers of all ages."
+          }
+        ]
+      }
+    ]
+
+    
