@@ -69,7 +69,7 @@ function mainMenu() {
         output: process.stdout
     });
 
-    rl.question("Please enter your choice: ", (choice) => {
+    rl.question("Please enter your choice: ", (choice: string) => {
         switch (parseInt(choice)) {
             case 1:
                 viewAllBooks();
