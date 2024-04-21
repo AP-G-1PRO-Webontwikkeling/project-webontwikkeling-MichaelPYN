@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book List</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <% sortFields.forEach(field => { %>
+                    <th>
+                        <a href="/?sortField=<%= field.value %>&sortOrder=<%= field.value === sortField ? sortOrder === 'asc' ? 'desc' : 'asc' : 'asc' %>">
+                            <%= field.text %>
+                            <% if (field.value === sortField) { %>
+                                <%= sortOrder === 'asc' ? '▲' : '▼' %>
+                            <% } %>
+                        </a>
+                    </th>
+                <% }); %>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% books.forEach(book => { %>
+                <tr>
+              
+                    <td><%= book.title %></td>
+                    <td><%= book.author %></td> 
+                    <td><%= book.publicationYear %></td>
+                    <td><%= book.rating %></td>
+                    <td><%= book.description %></td>
+                    <td><img src="/images/<%= book.title %>.jpeg" alt="<%= book.title %>"></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+
+</html>
