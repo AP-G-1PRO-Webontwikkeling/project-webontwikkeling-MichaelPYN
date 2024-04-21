@@ -22,6 +22,12 @@ interface Book {
   reviews: { username: string; rating: number; comment: string; }[];
 }
 
+interface Review{
+  username: string,
+  rating: number,
+  comment: string
+}
+
 
 // Set EJS as view engine and configure views directory
 app.set('view engine', 'ejs');
@@ -45,8 +51,18 @@ app.get('/', (req, res) => {
   const sortField = req.query.sortField || 'title';
   const sortOrder = req.query.sortOrder || 'asc';
 
-  // Sorteer de boeken op basis van het geselecteerde veld en de sorteerrichting
-  let sortedBooks = [...books].sort((a, b) => {
+  let q = (typeof req.query.q === 'string') ? req.query.q : '';
+  // Filter de boeken op basis van de zoekquery 'q'
+  let filteredBooks = [...books];
+  if (req.query.q) {
+    q = q.toLowerCase();
+    filteredBooks = filteredBooks.filter(book =>
+      book.title.toLowerCase().includes(q) || book.author.toLowerCase().includes(q) || book.publicationYear.toString().includes(q)
+    );
+  }
+
+  // Sorteer de gefilterde boeken op basis van het geselecteerde veld en de sorteerrichting
+  let sortedBooks = filteredBooks.sort((a, b) => {
       if (sortField === 'title') {
           return sortOrder === 'asc' ? a.title.localeCompare(b.title) : b.title.localeCompare(a.title);
       } else if (sortField === 'author') {
@@ -71,22 +87,73 @@ app.get('/', (req, res) => {
       { value: 'description', text: 'Description' }
   ];
 
-  // Render de boekenpagina met de gesorteerde boeken en sorteerinformatie
+ 
+
+  // Render de boekenpagina met de gesorteerde en gefilterde boeken en sorteerinformatie
   res.render('books', {
       books: sortedBooks,
-      sortFields, // Doorgeven van sortFields aan de EJS-template
+      sortFields,
       sortField,
-      sortOrder
+      sortOrder,
+      q: q
   });
 });
 
 
-//
-// Detailpagina voor elk boek
-app.get('/books/:id', (req, res) => {
-  const book = books.find(book => book.id === req.params.id);
-  res.render('book-details', { book });
+// Definieer een route voor het weergeven van een specifiek boek op basis van de ID
+app.get('/book/:id', (req, res) => {
+    const bookId = req.params.id;
+
+    // Zoek het boek op basis van de ID
+    const book = books.find(book => book.id === bookId);
+
+    if (book) {
+        // Render de boekpagina met de gevonden boekgegevens
+        res.render('book', { book });
+    } else {
+        // Als het boek niet is gevonden, rendeer een foutmelding
+        res.render('error', { message: 'Book not found' });
+    }
 });
+
+// Route for displaying reviews of a specific book
+app.get('/book/:id/reviews', (req, res) => {
+  const bookId = req.params.id;
+  // Fetch reviews for the book with the given ID
+  const reviewsForBook = getReviewsForBook(bookId);
+  res.render('reviews', { reviews: reviewsForBook });
+});
+
+// Route for all reviews
+app.get('/reviews', (req, res) => {
+  // Get all reviews for all books
+  const allReviews = getAllReviews();
+  // Render EJS template with all comments data
+  res.render('reviews', { reviews: allReviews });
+});
+
+
+// Function to get all reviews for all books
+function getAllReviews() {
+  let allReviews:Review[]=[];
+  // Iterate over each book
+  books.forEach(book => {
+    // Iterate over each review in the book's reviews array
+    book.reviews.forEach(review => {
+      // Add each review to the 'allReviews' array
+      allReviews.push(review);
+    });
+  });
+  return allReviews? allReviews:[];
+}
+
+function getReviewsForBook(bookId:string) {
+  // Find the book with the specified ID
+  const book = books.find(book => book.id === bookId);
+  // If the book is found, return its comments, otherwise return an empty array
+  return book ? book.reviews : [];
+}
+
 
 app.listen(PORT, () => {
   console.log(`The application is listening on http://localhost:3000`);

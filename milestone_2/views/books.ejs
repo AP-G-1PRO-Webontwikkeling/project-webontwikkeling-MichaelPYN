@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('partials/header') %>
+ <main>  
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book List</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-
-<body>
+    <form action="/" method="GET">
+        <input type="text" name="q" value="<%= q %>">
+        <button type="submit">Search for author, title or publication date</button>
+    </form>
     <table>
         <thead>
             <tr>
@@ -28,9 +24,12 @@
         <tbody>
             <% books.forEach(book => { %>
                 <tr>
-              
-                    <td><%= book.title %></td>
-                    <td><%= book.author %></td> 
+                    <td>
+                        <%= book.title %><br><br>
+                        <a href="/book/<%= book.id %>" class="button">View Book</a>
+                        <a href="/book/<%= book.id %>/reviews" class="button">Reviews</a> <!-- Corrected URL -->
+                    </td>
+                    <td><%= book.author %></td>
                     <td><%= book.publicationYear %></td>
                     <td><%= book.rating %></td>
                     <td><%= book.description %></td>
@@ -39,6 +38,5 @@
             <% }); %>
         </tbody>
     </table>
-</body>
-
-</html>
+</main>
+<%- include ("partials/footer") %>
