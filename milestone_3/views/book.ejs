@@ -1,0 +1,17 @@
+<%- include('partials/header') %>
+<section>
+    <article>
+        <h1><%= book.title %></h1>
+        <h2>by <%= book.author %></h2>
+        <p><img src="<%= book.imageUrl %>" class="img-book-cover"></p>
+        <p><%= book.description %></p>
+        <h3>Details</h3>
+        <p class="details">
+            <span>Publication Year: <%= book.publicationYear %></span>
+            <span>Available: <%= book.isAvailable ? 'Yes' : 'No' %></span>
+            <span>Genre: <%= book.genre %></span>
+        </p>
+        <button class="go-to-comments" onclick="window.location.href='/comments/<%= book.id %>'">Go to comments</button>    
+    </article>  
+</section>
+<%- include ("partials/footer") %>

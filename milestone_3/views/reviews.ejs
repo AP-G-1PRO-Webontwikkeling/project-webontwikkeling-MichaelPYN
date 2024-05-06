@@ -1,0 +1,13 @@
+<%- include('partials/header') %>
+<body>
+    <h1>All Reviews</h1>
+    <div class="reviews">
+        <% reviews.forEach(review => { %>
+            <div class="review">
+                <h2>Username: <%= review.username %></h2>
+                <h3>Rating: <%= review.rating %></h3>
+                <p>Comment: <%= review.comment %></p>
+            </div>
+        <% }); %>
+    </div>
+<%- include ('partials/footer') %>

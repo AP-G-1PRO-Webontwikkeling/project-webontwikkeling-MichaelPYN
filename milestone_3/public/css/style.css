@@ -1,0 +1,199 @@
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  background-color: #b4c9a6; 
+  border-radius: 5px;
+}
+
+h2 {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 16px;
+  text-align: center;
+}
+
+
+p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+nav{
+  background-color: #b4c9a6;
+  grid-area: nav;
+  display: flex;
+  flex: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  align-items: center;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  
+}
+
+
+nav .active {
+letter-spacing: 0.25rem;
+font-weight: bold;
+color: #e60005;
+}
+
+nav :hover {
+letter-spacing: 0.25rem;
+font-weight: bold;
+
+}
+
+.review h2{
+  text-align: left;
+  background-color: #e4e8e1;
+  padding: 5px;
+}
+
+.review h3,.review p{
+  text-align: left;
+}
+
+.button {
+  display: inline-block;
+  padding: 5px;
+  background-color: #9fb5a0;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+}
+
+th a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+
+table thead tr {
+  background-color: #a0a889;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+table th,
+table td {
+  padding: 12px 15px;
+}
+
+table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+table tbody tr:nth-of-type(even) {
+  background-color: #ffffff;
+}
+
+table tbody tr:last-of-type {
+  border-bottom: 2px solid #7f9800;
+}
+
+table tbody tr.active-row {
+  font-weight: bold;
+  color: #957d40;
+}
+td img {
+  max-width: 100px; /* Pas dit aan aan de gewenste breedte */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Om het meer op een boekig te laten gelijken */
+  border-radius: 5px; /* Add rounded corners */
+}
+
+
+footer{
+  background-color: #b4c9a6;
+  grid-area: footer;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px;
+  align-items: center;
+  border-radius: 5px;
+  
+}
+
+
+
+
+/* Media query < 992px */
+@media screen and (max-width: 992px) {
+  footer{
+    display: none;
+  }
+
+
+}
+
+
+/* Media query < 768px */
+@media screen and (max-width: 768px) {
+  
+  td img {
+    max-width: 80px; /* image kleiner*/
+  }
+   /* Verberg 'Description' field in header*/
+   th:nth-child(5) {
+    display: none;
+}
+
+    /* verberg 'Description' data cellen */
+    td:nth-child(5) {
+      display: none;
+  }
+  
+  /* tabel */
+  table {
+    width: 100%;
+  }
+
+}

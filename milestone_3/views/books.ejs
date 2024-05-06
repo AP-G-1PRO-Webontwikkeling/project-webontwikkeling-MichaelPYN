@@ -1,0 +1,48 @@
+<%- include('partials/header') %>
+ <main>  
+
+    <form action="/" method="GET">
+        <input type="text" name="q" value="<%= q %>">
+        <button type="submit">Search for author, title or publication date</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <% sortFields.forEach(field => { %>
+                    <th>
+                        <a href="/?sortField=<%= field.value %>&sortOrder=<%= field.value === sortField ? sortOrder === 'asc' ? 'desc' : 'asc' : 'asc' %>">
+                            <%= field.text %>
+                            <% if (field.value === sortField) { %>
+                                <%= sortOrder === 'asc' ? '▲' : '▼' %>
+                            <% } %>
+                        </a>
+                    </th>
+                <% }); %>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% books.forEach(book => { %>
+                <tr>
+                    <td>
+                        <%= book.title %><br><br>
+                        <a href="/book/<%= book.id %>" class="button">View Book</a>
+                        <a href="/book/<%= book.id %>/reviews" class="button">Reviews</a> <!-- Corrected URL -->
+                    </td>
+                    <td><%= book.author %></td>
+                    <td><%= book.publicationYear %></td>
+                    <td><%= book.rating %></td>
+                    <td><%= book.description %></td>
+                    <td>
+                        <% if (book.imageUrl) { %>
+                            <img src="<%= book.imageUrl %>" alt="<%= book.title %>">
+                        <% } else { %>
+                            No Image given for :  <%= book.title %>
+                        <% } %>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</main>
+<%- include ("partials/footer") %>
