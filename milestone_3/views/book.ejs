@@ -11,7 +11,10 @@
             <span>Available: <%= book.isAvailable ? 'Yes' : 'No' %></span>
             <span>Genre: <%= book.genre %></span>
         </p>
-        <button class="go-to-comments" onclick="window.location.href='/comments/<%= book.id %>'">Go to comments</button>    
+        <button class="go-to-comments" onclick="window.location.href='/book/<%= book.id %>/reviews'">Go to reviews of the book</button>
+        
+
+
     </article>  
 </section>
 <%- include ("partials/footer") %>

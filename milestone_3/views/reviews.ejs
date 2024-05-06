@@ -1,13 +1,28 @@
 <%- include('partials/header') %>
 <body>
     <h1>All Reviews</h1>
-    <div class="reviews">
-        <% reviews.forEach(review => { %>
-            <div class="review">
-                <h2>Username: <%= review.username %></h2>
-                <h3>Rating: <%= review.rating %></h3>
-                <p>Comment: <%= review.comment %></p>
-            </div>
-        <% }); %>
-    </div>
+    <% // Group reviews by book title %>
+    <% const reviewsByBook = {}; %>
+    <% reviews.forEach(review => { %>
+        <% const bookTitle = review.book.title; %>
+        <% if (!reviewsByBook[bookTitle]) { %>
+            <% reviewsByBook[bookTitle] = []; %>
+        <% } %>
+        <% reviewsByBook[bookTitle].push(review); %>
+    <% }); %>
+
+    <% // Iterate over each book title group %>
+    <% Object.keys(reviewsByBook).forEach(bookTitle => { %>
+        <h2 style="background-color: #b4c9a6;"><%= bookTitle %></h2>
+        <div class="reviews">
+            <% // Iterate over each review in the group %>
+            <% reviewsByBook[bookTitle].forEach(review => { %>
+                <div class="review">
+                    <h3>Username: <%= review.username %></h3>
+                    <p>Rating: <%= review.rating %></p>
+                    <p>Comment: <%= review.comment %></p>
+                </div>
+            <% }); %>
+        </div>
+    <% }); %>
 <%- include ('partials/footer') %>

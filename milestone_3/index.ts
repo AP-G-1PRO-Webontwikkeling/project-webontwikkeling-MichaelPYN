@@ -21,15 +21,30 @@ interface Book {
   rating: number;
   reviews: { username: string; rating: number; comment: string; }[];
 }
-
-interface Review{
-  username: string,
-  rating: number,
-  comment: string
+interface Review {
+  username: string;
+  rating: number;
+  comment: string;
+  book: {
+    title: string;
+    author: string;
+  };
 }
 
+let books: Book[]= [];
 
-let books: Book[]= []
+// Array of different comments
+const comments = [
+  'A great book!',
+  'Highly recommended!',
+  'Couldn\'t put it down!',
+  'Amazing storyline!',
+  'Well-written and engaging!',
+  'Not my cup of tea, but others might enjoy it!',
+  'Could be better, but still worth a read.',
+  'Disappointing. Expected more from this author.'
+];
+
 
 
 // Set EJS as view engine and configure views directory
@@ -119,13 +134,13 @@ app.get('/book/:id', (req, res) => {
     }
 });
 
-// Route for displaying reviews of a specific book
 app.get('/book/:id/reviews', (req, res) => {
   const bookId = req.params.id;
   // Fetch reviews for the book with the given ID
   const reviewsForBook = getReviewsForBook(bookId);
-  res.render('reviews', { reviews: reviewsForBook });
+  res.render('review', { reviews: reviewsForBook });
 });
+
 
 // Route for all reviews
 app.get('/reviews', (req, res) => {
@@ -138,17 +153,20 @@ app.get('/reviews', (req, res) => {
 
 // Function to get all reviews for all books
 function getAllReviews() {
-  let allReviews:Review[]=[];
+  let allReviews: Review[] = [];
   // Iterate over each book
   books.forEach(book => {
     // Iterate over each review in the book's reviews array
-    book.reviews.forEach(review => {
-      // Add each review to the 'allReviews' array
-      allReviews.push(review);
+    book.reviews.forEach((review: any) => { // Cast review to 'any'
+      // Check if 'book' property exists on the review
+      if (review.book) {
+        allReviews.push(review);
+      }
     });
   });
-  return allReviews? allReviews:[];
+  return allReviews ? allReviews : [];
 }
+
 
 function getReviewsForBook(bookId:string) {
   // Find the book with the specified ID
@@ -167,6 +185,11 @@ app.listen(PORT, async () => {
 });
 
 
+
+// Function to generate random integer within a range
+function getRandomInt(min:number, max:number) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 async function fetchBooks() {
   try {
     const url = `https://www.googleapis.com/books/v1/volumes?q=inauthor:"Ernest Hemingway"+inauthor:"George Orwell"+inauthor:"John Steinbeck"+inauthor:"J.D. Salinger"+inauthor:"Harper Lee"+inauthor:"F. Scott Fitzgerald"+inauthor:"Jane Austen"+inauthor:"Herman Melville"+inauthor:"J.R.R. Tolkien"&maxResults=40`;
@@ -184,10 +207,23 @@ async function fetchBooks() {
         isAvailable: true, // Assuming all fetched books are available
         genre: item.volumeInfo.categories ? item.volumeInfo.categories.join(', ') : 'Unknown Genre',
         imageUrl: item.volumeInfo.imageLinks ? item.volumeInfo.imageLinks.thumbnail : '',
-        rating: 0, // You can set default rating
-        reviews: [] // Initially, there are no reviews
+        rating: getRandomInt(1, 5), // Generate a random rating between 1 and 5
+        reviews: Array.from({ length: getRandomInt(1, 5) }, () => ({ // Generate random reviews
+          username: 'Anonymous',
+          rating: getRandomInt(1, 5),
+          comment: comments[getRandomInt(0, comments.length - 1)] // Select a random comment from the array
+        }))
       }));
-      //console.log('Books:', books); Controle
+      
+      // Assign book information to each review
+      books.forEach(book => {
+        book.reviews.forEach((review: any) => {
+          review.book = {
+            title: book.title,
+            author: book.author
+          };
+        });
+      });
     } else {
       console.log('No books found.');
     }
@@ -197,4 +233,3 @@ async function fetchBooks() {
 }
 
 fetchBooks();
-
